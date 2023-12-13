@@ -13,9 +13,12 @@ class DetailVC: UIViewController, UITextViewDelegate {
   var note: Note?
   var allNotes: [Note]?
   var onNoteUpdate: ((Note) -> Void)?
+  var toolbar: UIToolbar!
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    configureToolbar()
     
     navigationController?.navigationBar.prefersLargeTitles = false
     
@@ -27,7 +30,7 @@ class DetailVC: UIViewController, UITextViewDelegate {
     let save = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveNote))
     let activityIndicator = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped))
     
-    navigationItem.rightBarButtonItems = [save, activityIndicator]
+    navigationItem.rightBarButtonItems = [activityIndicator, save]
   }
   
   func textViewDidChange(_ textView: UITextView) {
@@ -42,10 +45,10 @@ class DetailVC: UIViewController, UITextViewDelegate {
   }
   
   @objc func saveNote() {
-      guard let updatedNote = note else { return }
-      note?.text = textView.text
-      onNoteUpdate?(updatedNote)
-      navigationController?.popViewController(animated: true)
+    guard let updatedNote = note else { return }
+    note?.text = textView.text
+    onNoteUpdate?(updatedNote)
+    navigationController?.popViewController(animated: true)
   }
   
   @objc func shareTapped() {
@@ -58,5 +61,17 @@ class DetailVC: UIViewController, UITextViewDelegate {
     }
     
     present(activityVC, animated: true)
+  }
+  
+  private func configureToolbar() {
+    toolbar = UIToolbar()
+    toolbar.translatesAutoresizingMaskIntoConstraints = false
+    view.addSubview(toolbar)
+    
+    NSLayoutConstraint.activate([
+      toolbar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      toolbar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+      toolbar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+    ])
   }
 }
