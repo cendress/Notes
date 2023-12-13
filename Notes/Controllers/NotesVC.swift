@@ -15,7 +15,7 @@ class NotesVC: UITableViewController {
     
     notes = Note.loadNotes()
     
-    navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addNote))
+    navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNote))
     navigationItem.leftBarButtonItem = self.editButtonItem
     
     navigationController?.navigationBar.prefersLargeTitles = true
@@ -47,15 +47,15 @@ class NotesVC: UITableViewController {
   //MARK: - Tableview delegate methods
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    tableView.deselectRow(at: indexPath, animated: true)
-    
     if let detailVC = navigationController?.storyboard?.instantiateViewController(identifier: "DetailVC") as? DetailVC {
       detailVC.note = notes[indexPath.row]
-      detailVC.allNotes = notes
       detailVC.onNoteUpdate = { [weak self] updatedNote in
-        self?.notes[indexPath.row] = updatedNote
-        Note.saveNotes(notes: self?.notes ?? [])
-        self?.tableView.reloadData()
+        guard let strongSelf = self else { return }
+        if let index = strongSelf.notes.firstIndex(where: { $0.id == updatedNote.id }) {
+          strongSelf.notes[index] = updatedNote
+          Note.saveNotes(notes: strongSelf.notes)
+          strongSelf.tableView.reloadData()
+        }
       }
       navigationController?.pushViewController(detailVC, animated: true)
     }

@@ -23,6 +23,8 @@ class DetailVC: UIViewController, UITextViewDelegate {
       self.title = noteToShow.title
       textView.text = noteToShow.text
     }
+    
+    navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveNote))
   }
   
   func textViewDidChange(_ textView: UITextView) {
@@ -34,5 +36,12 @@ class DetailVC: UIViewController, UITextViewDelegate {
     if let updatedNote = note {
       onNoteUpdate?(updatedNote)
     }
+  }
+  
+  @objc func saveNote() {
+      guard let updatedNote = note else { return }
+      note?.text = textView.text
+      onNoteUpdate?(updatedNote)
+      navigationController?.popViewController(animated: true)
   }
 }

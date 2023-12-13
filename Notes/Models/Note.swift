@@ -20,7 +20,7 @@ struct Note: Codable, Identifiable {
     
     do {
       let encoded = try encoder.encode(notes)
-      defaults.setValue(encoded, forKey: savedNotesKey)
+      defaults.set(encoded, forKey: savedNotesKey)
     } catch {
       print("Failed to encode the data, \(error.localizedDescription)")
     }
