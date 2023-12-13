@@ -13,6 +13,8 @@ class NotesVC: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    notes = Note.loadNotes()
+    
     navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addNote))
   }
   
