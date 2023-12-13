@@ -27,6 +27,9 @@ class DetailVC: UIViewController, UITextViewDelegate {
   
   func textViewDidChange(_ textView: UITextView) {
     note?.text = textView.text
-    Note.saveNotes(notes: note)
+    
+    if let updatedNote = note {
+      onNoteUpdate?(updatedNote)
+    }
   }
 }
