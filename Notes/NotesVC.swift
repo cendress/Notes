@@ -51,7 +51,10 @@ class NotesVC: UITableViewController {
       self?.tableView.reloadData()
     }
     
+    let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+    
     ac.addAction(done)
+    ac.addAction(cancel)
     present(ac, animated: true)
   }
 }
