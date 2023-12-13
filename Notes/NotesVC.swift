@@ -34,7 +34,10 @@ class NotesVC: UITableViewController {
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
-    //push detailVC
+    
+    if let detailVC = navigationController?.storyboard?.instantiateViewController(identifier: "DetailVC") as? DetailVC {
+      navigationController?.pushViewController(detailVC, animated: true)
+    }
   }
   
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
