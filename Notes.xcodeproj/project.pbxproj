@@ -63,10 +63,10 @@
 				9DE19E142B29ED4D0041F914 /* AppDelegate.swift */,
 				9DE19E162B29ED4D0041F914 /* SceneDelegate.swift */,
 				9DE19E182B29ED4D0041F914 /* NotesVC.swift */,
+				9DE19E2C2B29FB0E0041F914 /* DetailVC.swift */,
 				9DE19E282B29F1910041F914 /* Note.swift */,
 				9DE19E1A2B29ED4D0041F914 /* Main.storyboard */,
 				9DE19E1D2B29ED500041F914 /* Assets.xcassets */,
-				9DE19E2C2B29FB0E0041F914 /* DetailVC.swift */,
 				9DE19E1F2B29ED500041F914 /* LaunchScreen.storyboard */,
 				9DE19E222B29ED500041F914 /* Info.plist */,
 			);
