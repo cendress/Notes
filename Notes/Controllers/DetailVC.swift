@@ -8,6 +8,8 @@
 import UIKit
 
 class DetailVC: UIViewController {
+  @IBOutlet weak var textView: UITextView!
+  
   var note: Note?
   
   override func viewDidLoad() {
