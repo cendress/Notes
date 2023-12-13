@@ -65,7 +65,7 @@ class NotesVC: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    60
+    80
   }
   
   //MARK: - Other methods
