@@ -10,6 +10,11 @@ import UIKit
 class NotesVC: UITableViewController {
   var notes: [Note] = []
   
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    navigationController?.navigationBar.prefersLargeTitles = true
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -17,8 +22,6 @@ class NotesVC: UITableViewController {
     
     navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNote))
     navigationItem.leftBarButtonItem = self.editButtonItem
-    
-    navigationController?.navigationBar.prefersLargeTitles = true
   }
   
   //MARK: - Tableview data source methods
