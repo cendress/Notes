@@ -58,10 +58,11 @@ class NotesVC: UITableViewController {
     }
     
     let done = UIAlertAction(title: "Done", style: .default) { [weak self, weak ac] action in
-      guard let text = ac?.textFields?.first?.text else { return }
+      guard let text = ac?.textFields?.first?.text, !text.isEmpty else { return }
       
       let newNote = Note(title: text, text: "")
       self?.notes.append(newNote)
+      Note.saveNotes(notes: self?.notes ?? [])
       self?.tableView.reloadData()
     }
     
