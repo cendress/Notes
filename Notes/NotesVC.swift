@@ -8,10 +8,11 @@
 import UIKit
 
 class NotesVC: UITableViewController {
-  let notes: [Note] = []
+  var notes: [Note] = []
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
     navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addNote))
   }
   
@@ -36,8 +37,17 @@ class NotesVC: UITableViewController {
     //push detailVC
   }
   
+  //MARK: - Other methods
+  
   @objc func addNote() {
+    let ac = UIAlertController(title: "Add Note", message: nil, preferredStyle: .alert)
+    ac.addTextField()
     
+    let done = UIAlertAction(title: "Done", style: .default) { [weak self, weak ac] action in
+      guard let text = ac?.textFields?.first as? String else { return }
+      
+      notes.append(text)
+    }
   }
 }
 
