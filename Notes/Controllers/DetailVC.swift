@@ -49,6 +49,14 @@ class DetailVC: UIViewController, UITextViewDelegate {
   }
   
   @objc func shareTapped() {
+    guard let noteText = note?.text else { return }
     
+    let activityVC = UIActivityViewController(activityItems: [noteText], applicationActivities: nil)
+    
+    if let popoverController = activityVC.popoverPresentationController {
+      popoverController.barButtonItem = navigationItem.rightBarButtonItem
+    }
+    
+    present(activityVC, animated: true)
   }
 }
