@@ -51,6 +51,12 @@ class NotesVC: UITableViewController {
     
     if let detailVC = navigationController?.storyboard?.instantiateViewController(identifier: "DetailVC") as? DetailVC {
       detailVC.note = notes[indexPath.row]
+      detailVC.allNotes = notes
+      detailVC.onNoteUpdate = { [weak self] updatedNote in
+        self?.notes[indexPath.row] = updatedNote
+        Note.saveNotes(notes: self?.notes ?? [])
+        self?.tableView.reloadData()
+      }
       navigationController?.pushViewController(detailVC, animated: true)
     }
   }
