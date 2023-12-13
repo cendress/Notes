@@ -51,7 +51,10 @@ class DetailVC: UIViewController, UITextViewDelegate {
   }
   
   @objc func deleteNote() {
-    
+    note?.text = ""
+    if let updatedNote = note {
+      onNoteUpdate?(updatedNote)
+    }
   }
   
   @objc func shareTapped() {
@@ -76,13 +79,15 @@ class DetailVC: UIViewController, UITextViewDelegate {
       toolbar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
       toolbar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
     ])
+    
+    configureToolbarItems()
   }
   
   private func configureToolbarItems() {
-          let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-          let toolbarButton1 = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveNote))
-          let toolbarButton2 = UIBarButtonItem(title: "Delete", style: .plain, target: self, action: #selector(deleteNote))
-
-          toolbar.setItems([toolbarButton1, flexibleSpace, toolbarButton2], animated: false)
-      }
+    let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+    let saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveNote))
+    let deleteButton = UIBarButtonItem(title: "Delete", style: .plain, target: self, action: #selector(deleteNote))
+    
+    toolbar.setItems([deleteButton, flexibleSpace, saveButton], animated: false)
+  }
 }
