@@ -13,9 +13,10 @@ class DetailVC: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    navigationController?.navigationBar.prefersLargeTitles = false
+    
     if let noteToShow = note {
-      navigationController?.title = noteToShow.title
+      self.title = noteToShow.title
     }
   }
-  
 }

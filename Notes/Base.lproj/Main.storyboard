@@ -37,10 +37,10 @@
             </objects>
             <point key="canvasLocation" x="979.38931297709917" y="127.46478873239437"/>
         </scene>
-        <!--View Controller-->
+        <!--DetailVC-->
         <scene sceneID="Xvl-Od-Zpk">
             <objects>
-                <viewController storyboardIdentifier="DetailVC" id="Rr8-UA-2AT" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailVC" id="Rr8-UA-2AT" customClass="DetailVC" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="91S-OH-ErI">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
