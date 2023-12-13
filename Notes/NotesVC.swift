@@ -44,10 +44,15 @@ class NotesVC: UITableViewController {
     ac.addTextField()
     
     let done = UIAlertAction(title: "Done", style: .default) { [weak self, weak ac] action in
-      guard let text = ac?.textFields?.first as? String else { return }
+      guard let text = ac?.textFields?.first?.text else { return }
       
-      notes.append(text)
+      let newNote = Note(title: text, text: "")
+      self?.notes.append(newNote)
+      self?.tableView.reloadData()
     }
+    
+    ac.addAction(done)
+    present(ac, animated: true)
   }
 }
 
