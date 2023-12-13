@@ -37,11 +37,18 @@ class NotesVC: UITableViewController {
     //push detailVC
   }
   
+  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    60
+  }
+  
   //MARK: - Other methods
   
   @objc func addNote() {
     let ac = UIAlertController(title: "Add Note", message: nil, preferredStyle: .alert)
-    ac.addTextField()
+    
+    ac.addTextField { textField in
+      textField.autocapitalizationType = .sentences
+    }
     
     let done = UIAlertAction(title: "Done", style: .default) { [weak self, weak ac] action in
       guard let text = ac?.textFields?.first?.text else { return }
