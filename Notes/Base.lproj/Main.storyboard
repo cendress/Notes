@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--NotesVC-->
+        <!--Notes-->
         <scene sceneID="5yU-QD-vbW">
             <objects>
                 <tableViewController id="Ewo-p4-gdi" customClass="NotesVC" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
@@ -30,7 +30,7 @@
                             <outlet property="delegate" destination="Ewo-p4-gdi" id="Lk5-Vo-EfJ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="NXc-t0-c3Z"/>
+                    <navigationItem key="navigationItem" title="Notes" id="NXc-t0-c3Z"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hil-u0-ANb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -41,8 +41,8 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kwJ-Pe-f3i" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SL6-bh-QNi">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="SL6-bh-QNi">
+                        <rect key="frame" x="0.0" y="59" width="393" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
