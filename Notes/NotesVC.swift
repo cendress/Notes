@@ -7,7 +7,8 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class NotesVC: UITableViewController {
+  let notes: [Note] = []
   
   override func viewDidLoad() {
     super.viewDidLoad()
