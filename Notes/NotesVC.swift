@@ -12,7 +12,7 @@ class NotesVC: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
- 
+    navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addNote))
   }
   
   //MARK: - Tableview data source methods
@@ -34,6 +34,10 @@ class NotesVC: UITableViewController {
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
     //push detailVC
+  }
+  
+  @objc func addNote() {
+    
   }
 }
 
