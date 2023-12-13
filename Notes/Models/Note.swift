@@ -19,9 +19,24 @@ struct Note: Codable {
     
     do {
       let encoded = try encoder.encode(notes)
-        defaults.setValue(notes, forKey: savedNotesKey)
+      defaults.setValue(encoded, forKey: savedNotesKey)
     } catch {
-      print("Failed to encode data, \(error.localizedDescription)")
+      print("Failed to encode the data, \(error.localizedDescription)")
     }
+  }
+  
+  static func loadNotes() -> [Note] {
+    let defaults = UserDefaults.standard
+    let decoder = JSONDecoder()
+    
+    if let savedNotes = defaults.object(forKey: savedNotesKey) as? Data {
+      do {
+        return try decoder.decode([Note].self, from: savedNotes)
+      } catch {
+        print("Failed to decode the data, \(error.localizedDescription)")
+      }
+    }
+    
+    return []
   }
 }
