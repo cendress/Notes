@@ -10,4 +10,6 @@ import Foundation
 struct Note: Codable {
   let title: String
   let text: String
+  
+  static let savedNotesKey = "SavedNotes"
 }
