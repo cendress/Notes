@@ -36,6 +36,7 @@ class NotesVC: UITableViewController {
     tableView.deselectRow(at: indexPath, animated: true)
     
     if let detailVC = navigationController?.storyboard?.instantiateViewController(identifier: "DetailVC") as? DetailVC {
+      detailVC.note = notes[indexPath.row]
       navigationController?.pushViewController(detailVC, animated: true)
     }
   }

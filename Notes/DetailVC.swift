@@ -8,10 +8,14 @@
 import UIKit
 
 class DetailVC: UIViewController {
+  var note: Note?
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    if let noteToShow = note {
+      navigationController?.title = noteToShow.title
+    }
   }
   
 }
