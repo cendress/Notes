@@ -16,6 +16,7 @@ class NotesVC: UITableViewController {
     notes = Note.loadNotes()
     
     navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addNote))
+    navigationItem.rightBarButtonItem = self.editButtonItem
   }
   
   //MARK: - Tableview data source methods
