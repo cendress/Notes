@@ -27,7 +27,10 @@ class DetailVC: UIViewController, UITextViewDelegate {
   
   func textViewDidChange(_ textView: UITextView) {
     note?.text = textView.text
-    
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
     if let updatedNote = note {
       onNoteUpdate?(updatedNote)
     }
