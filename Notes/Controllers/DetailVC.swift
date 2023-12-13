@@ -27,10 +27,9 @@ class DetailVC: UIViewController, UITextViewDelegate {
       textView.text = noteToShow.text
     }
     
-    let save = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveNote))
     let activityIndicator = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped))
     
-    navigationItem.rightBarButtonItems = [activityIndicator, save]
+    navigationItem.rightBarButtonItem = activityIndicator
   }
   
   func textViewDidChange(_ textView: UITextView) {
@@ -49,6 +48,10 @@ class DetailVC: UIViewController, UITextViewDelegate {
     note?.text = textView.text
     onNoteUpdate?(updatedNote)
     navigationController?.popViewController(animated: true)
+  }
+  
+  @objc func deleteNote() {
+    
   }
   
   @objc func shareTapped() {
@@ -74,4 +77,12 @@ class DetailVC: UIViewController, UITextViewDelegate {
       toolbar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
     ])
   }
+  
+  private func configureToolbarItems() {
+          let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+          let toolbarButton1 = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveNote))
+          let toolbarButton2 = UIBarButtonItem(title: "Delete", style: .plain, target: self, action: #selector(deleteNote))
+
+          toolbar.setItems([toolbarButton1, flexibleSpace, toolbarButton2], animated: false)
+      }
 }
