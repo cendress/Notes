@@ -24,7 +24,10 @@ class DetailVC: UIViewController, UITextViewDelegate {
       textView.text = noteToShow.text
     }
     
-    navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveNote))
+    let save = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveNote))
+    let activityIndicator = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped))
+    
+    navigationItem.rightBarButtonItems = [save, activityIndicator]
   }
   
   func textViewDidChange(_ textView: UITextView) {
@@ -43,5 +46,9 @@ class DetailVC: UIViewController, UITextViewDelegate {
       note?.text = textView.text
       onNoteUpdate?(updatedNote)
       navigationController?.popViewController(animated: true)
+  }
+  
+  @objc func shareTapped() {
+    
   }
 }
