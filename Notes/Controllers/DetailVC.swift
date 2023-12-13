@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailVC: UIViewController {
+class DetailVC: UIViewController, UITextFieldDelegate {
   @IBOutlet weak var textView: UITextView!
   
   var note: Note?
