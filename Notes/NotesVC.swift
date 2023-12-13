@@ -52,6 +52,7 @@ class NotesVC: UITableViewController {
     
     ac.addTextField { textField in
       textField.autocapitalizationType = .sentences
+      textField.placeholder = "Write the title of your note here"
     }
     
     let done = UIAlertAction(title: "Done", style: .default) { [weak self, weak ac] action in
